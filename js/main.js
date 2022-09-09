@@ -1,83 +1,142 @@
 console.clear();
 localStorage.clear();
+//  Characters
+let characters = [];
+const symbolsCH = ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", ",", "|", ":", ";", "<", ">", ".", "?", "/"];
+const lowerCH = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const upperCH = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const numbersCH = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const allCharacters = [...symbolsCH, ...lowerCH, ...upperCH, ...numbersCH];
+// Symbols
+const symbols_lower = [...symbolsCH, ...lowerCH];
+const symbols_upper = [...symbolsCH, ...upperCH];
+const symbols_numbers = [...symbolsCH, ...numbersCH];
+const symbols_lower_upper = [...symbolsCH, ...lowerCH, ...upperCH];
+const symbols_lower_numbers = [...symbolsCH, ...lowerCH, ...numbersCH];
+const symbols_upper_numbers = [...symbolsCH, ...upperCH, ...numbersCH];
+
+// LowerCase
+const lower_upper = [...lowerCH, ...upperCH];
+const lower_numbers = [...lowerCH, ...numbersCH];
+const lower_upper_numbers = [...lowerCH, ...upperCH, ...numbersCH];
+
+// UpperCase
+const upper_numbers = [...upperCH, ...numbersCH];
+
 // variables ( DOM )
 
 const passwordLengthEl = document.getElementById("password-length");
 const rangeEl = document.getElementById("Range");
+let length = rangeEl.value;
 const firstPasswordEl = document.getElementById("first-password");
 const secondPasswordEl = document.getElementById("second-password");
-const upperEl = document.getElementById("upper-characters");
-const lowerEl = document.getElementById("lower-characters");
-const numbersEl = document.getElementById("numbers-characters");
-const symbolsEl = document.getElementById("symbols-characters");
+let upperEl = document.getElementById("upper-characters"),
+ upper = true;
+let lowerEl = document.getElementById("lower-characters"),
+ lower = true;
+let numbersEl = document.getElementById("numbers-characters"),
+ number = true;
+let symbolsEl = document.getElementById("symbols-characters"),
+ symbol = true;
 const generateEl = document.getElementById("generate-passwords");
 const clipboardOneEl = document.getElementById("Copy-1");
+const firstCopy = document.getElementById("first-copy");
 const clipboardTwoEl = document.getElementById("Copy-2");
+const secondCopy = document.getElementById("second-copy");
+const hasUpper = upperEl.checked;
+const hasLower = lowerEl.checked;
+const hasNumbers = numbersEl.checked;
+const hasSymbols = symbolsEl.checked;
 
-// length range value
+// Check Boxes
+upperEl.onchange = event => {
+ if (upperEl.checked) {
+  upper = true;
+ } else {
+  upper = false;
+ }
+};
+lowerEl.onchange = event => {
+ if (lowerEl.checked) {
+  lower = true;
+ } else {
+  lower = false;
+ }
+};
+console.log(lower);
+numbersEl.onchange = event => {
+ if (numbersEl.checked) {
+  number = true;
+ } else {
+  number = false;
+ }
+};
+symbolsEl.onchange = event => {
+ if (symbolsEl.checked) {
+  symbol = true;
+ } else {
+  symbol = false;
+ }
+};
 
+// Length of the Password
 passwordLengthEl.textContent += " " + rangeEl.value;
 rangeEl.oninput = function () {
  passwordLengthEl.textContent = +this.value;
+ length = this.value;
 };
+// generate
 
-//  generate
-
-generateEl.addEventListener("click", function () {
- const length = rangeEl.value;
- const hasUpper = upperEl.checked;
- const hasLower = lowerEl.checked;
- const hasNumbers = numbersEl.checked;
- const hasSymbols = symbolsEl.checked;
- firstPasswordEl.innerText = generatePassword(hasUpper, hasLower, hasNumbers, hasSymbols, length);
- secondPasswordEl.innerText = generatePassword(hasUpper, hasLower, hasNumbers, hasSymbols, length);
-});
-
-function generatePassword(upper, lower, number, symbol, length) {
+function generatePassword() {
  let generatedPassword = "";
- const boxesCount = upper + lower + number + symbol;
- const boxesArr = [{ upper }, { lower }, { number }, { symbol }].filter(item => Object.values(item)[0]);
+ const boxesCount = lower + upper + number + symbol;
  if (boxesCount === 0) {
   return "";
  }
- for (let i = 0; i < length; i += boxesCount) {
-  boxesArr.forEach(type => {
-   const funcName = Object.keys(type)[0];
-   generatedPassword += randomFunc[funcName]();
-  });
+ if (upper === true && boxesCount === 1) {
+  characters = upperCH;
+ } else if (lower === true && boxesCount === 1) {
+  characters = lowerCH;
+ } else if (number === true && boxesCount === 1) {
+  characters = numbersCH;
+ } else if (symbol === true && boxesCount === 1) {
+  characters = symbolsCH;
+ } else if (upper === true && lower === true && boxesCount === 2) {
+  characters = lower_upper;
+ } else if (upper === true && number === true && boxesCount === 2) {
+  characters = upper_numbers;
+ } else if (upper === true && symbol === true && boxesCount === 2) {
+  characters = symbols_upper;
+ } else if (lower === true && number === true && boxesCount === 2) {
+  characters = lower_numbers;
+ } else if (lower === true && symbol === true && boxesCount === 2) {
+  characters = symbols_lower;
+ } else if (number === true && symbol === true && boxesCount === 2) {
+  characters = symbols_numbers;
+ } else if (symbol === true && lower === true && upper === true && boxesCount === 3) {
+  characters = symbols_lower_upper;
+ } else if (symbol === true && lower === true && number === true && boxesCount === 3) {
+  characters = symbols_lower_numbers;
+ } else if (symbol === true && upper === true && number === true && boxesCount === 3) {
+  characters = symbols_upper_numbers;
+ } else if (number === true && lower === true && upper === true && boxesCount === 3) {
+  characters = lower_upper_numbers;
+ } else if (boxesCount == 4) {
+  characters = allCharacters;
  }
- const finalPassword = generatedPassword.slice(0, length);
- return finalPassword;
+ for (let i = 0; i < length; i++) {
+  generatedPassword += characters[Math.floor(Math.random() * characters.length)];
+ }
+ return generatedPassword;
 }
+generateEl.addEventListener("click", () => {
+ firstPasswordEl.innerText = generatePassword();
+ firstCopy.textContent = "Copy";
+ secondPasswordEl.innerText = generatePassword();
+ secondCopy.textContent = "Copy";
+});
 
-// random functions
-
-const randomFunc = {
- upper: getRandomUpper,
- lower: getRandomLower,
- number: getRandomNumber,
- symbol: getRandomSymbol,
-};
-function getRandomUpper() {
- const upperCH = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
- return upperCH[Math.floor(Math.random() * upperCH.length)];
-}
-function getRandomLower() {
- const lowerCH = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
- return lowerCH[Math.floor(Math.random() * lowerCH.length)];
-}
-function getRandomNumber() {
- const numbersCH = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
- return numbersCH[Math.floor(Math.random() * numbersCH.length)];
-}
-function getRandomSymbol() {
- const symbolsCH = ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", ",", "|", ":", ";", "<", ">", ".", "?", "/"];
-
- return symbolsCH[Math.floor(Math.random() * symbolsCH.length)];
-}
 // clipboard
-
 clipboardOneEl.addEventListener("click", () => {
  const textareaOne = document.createElement("textarea");
  const passwordOne = firstPasswordEl.innerText;
@@ -89,7 +148,8 @@ clipboardOneEl.addEventListener("click", () => {
  textareaOne.select();
  document.execCommand("copy");
  textareaOne.remove();
- alert(`This password : ${passwordOne} copied`);
+ firstCopy.textContent = "Copied";
+ secondCopy.textContent = "Copy";
 });
 clipboardTwoEl.addEventListener("click", () => {
  const textareaTwo = document.createElement("textarea");
@@ -102,5 +162,6 @@ clipboardTwoEl.addEventListener("click", () => {
  textareaTwo.select();
  document.execCommand("copy");
  textareaTwo.remove();
- alert(`This password : ${passwordTwo} copied`);
+ secondCopy.textContent = "Copied";
+ firstCopy.textContent = "Copy";
 });
