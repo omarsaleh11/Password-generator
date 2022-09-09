@@ -12,62 +12,69 @@
        and the start of the fonts families-->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@700;800&display=swap"
-   rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@700;800&display=swap" rel="stylesheet" />
   <!-- end of fonts families -->
   <title>Generate passwords</title>
  </head>
  <body>
   <div class="center">
    <main>
-    <section class="top">
-     <article>
-      <div class="title">
-       <h1>
-        Generate a
-        <span>random password</span>
-       </h1>
-      </div>
-      <div class="desc">
-       <p>Never use an insecure password again.</p>
-      </div>
-     </article>
-     <article class="passwords">
-      <div class="btn">
-       <button onclick="generate()" class="generate-passwords">Generate passwords</button>
-      </div>
-      <div class="password-lenth">
-       <label for="password-lenth">
-        Password Lenth :
-        <span id="password-lenth"></span>
-       </label>
-       <input type="range" name="password-lenth" value="15" id="Range" min="6" max="35" />
-      </div>
-      <div class="flex">
-       <div class="characters checkbox">
-        <label for="numbers">Numbers</label>
-        <input type="checkbox" name="numbers" id="numbers-chrctrs" onclick="Numbers()" value="yes" checked />
+    <div class="password-generator">
+     <section class="top">
+      <article>
+       <div class="title">
+        <h1>
+         Generate a
+         <span>random password</span>
+        </h1>
        </div>
-       <div class="symbols checkbox">
-        <label for="symbols">Symbols</label>
-        <input type="checkbox" name="symbols" id="symbols-chrctrs" onclick="Symbols()" value="yes" checked />
+       <div class="desc">
+        <p>Never use an insecure password again.</p>
        </div>
+      </article>
+      <article class="passwords">
+       <div class="btn">
+        <button class="generate-passwords" type="submit" id="generate-passwords">Generate passwords</button>
+       </div>
+       <div class="password-length">
+        <label for="password-length">
+         Password Length :
+         <span id="password-length"></span>
+        </label>
+        <input type="range" name="password-length" value="15" id="Range" min="6" max="25" />
+       </div>
+       <div class="flex">
+        <div class="upper checkbox">
+         <label for="upper">UpperCase</label>
+         <input type="checkbox" name="upper" id="upper-characters" value="yes" checked />
+        </div>
+        <div class="lower checkbox">
+         <label for="lower">LowerCase</label>
+         <input type="checkbox" name="lower" id="lower-characters" value="yes" checked />
+        </div>
+        <div class="characters checkbox">
+         <label for="numbers">Numbers</label>
+         <input type="checkbox" name="numbers" id="numbers-characters" value="yes" checked />
+        </div>
+        <div class="symbols checkbox">
+         <label for="symbols">Symbols</label>
+         <input type="checkbox" name="symbols" id="symbols-characters" value="yes" checked />
+        </div>
+       </div>
+      </article>
+     </section>
+     <div class="line"></div>
+     <section class="bottom">
+      <div class="pass-one pass" id="Copy-1">
+       <button id="first-password" class="password"></button>
+       <button class="copy">Copy</button>
       </div>
-     </article>
-    </section>
-    <div class="line"></div>
-    <section class="bottom">
-     <div class="pass-one pass">
-      <button id="first-password" class="password"></button>
-      <button class="copy copy1" onclick="copy1()">Copy</button>
-     </div>
-     <div class="pass-two pass">
-      <button id="second-password" class="password"></button>
-      <button class="copy copy2" onclick="copy2()">Copy</button>
-     </div>
-    </section>
+      <div class="pass-two pass" id="Copy-2">
+       <button id="second-password" class="password"></button>
+       <button class="copy">Copy</button>
+      </div>
+     </section>
+    </div>
    </main>
   </div>
   <script src="/js/main.js"></script>
