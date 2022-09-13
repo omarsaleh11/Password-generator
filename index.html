@@ -13,7 +13,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@700;800&display=swap" rel="stylesheet" />
-  <!-- end of fonts families -->
+  <!-- end of fonts families 
+       and the start of fontawesome icons-->
+  <link
+   rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+   integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+   crossorigin="anonymous"
+   referrerpolicy="no-referrer"
+  />
+  <!-- the end -->
   <title>Generate passwords</title>
  </head>
  <body>
@@ -52,24 +61,24 @@
          Password Length :
          <span id="password-length"></span>
         </label>
-        <input type="range" name="password-length" value="15" id="Range" min="4" max="25" />
+        <input type="range" name="password-length" value="15" id="Range" min="4" max="25" class="slider slider-progress" />
        </div>
        <div class="flex">
         <div class="upper checkbox">
-         <label for="upper">UpperCase</label>
-         <input type="checkbox" name="upper" id="upper-characters" value="yes" checked />
+         <label for="upper-characters">UpperCase</label>
+         <input type="checkbox" id="upper-characters" value="yes" checked />
         </div>
         <div class="lower checkbox">
-         <label for="lower">LowerCase</label>
-         <input type="checkbox" name="lower" id="lower-characters" value="yes" checked />
+         <label for="lower-characters">LowerCase</label>
+         <input type="checkbox" id="lower-characters" value="yes" checked />
         </div>
         <div class="characters checkbox">
-         <label for="numbers">Numbers</label>
-         <input type="checkbox" name="numbers" id="numbers-characters" value="yes" checked />
+         <label for="numbers-characters">Numbers</label>
+         <input type="checkbox" id="numbers-characters" value="yes" checked />
         </div>
         <div class="symbols checkbox">
-         <label for="symbols">Symbols</label>
-         <input type="checkbox" name="symbols" id="symbols-characters" value="yes" checked />
+         <label for="symbols-characters">Symbols</label>
+         <input type="checkbox" id="symbols-characters" value="yes" checked />
         </div>
        </div>
       </article>
@@ -89,5 +98,6 @@
    </main>
   </div>
   <script src="/js/main.js"></script>
+  <script src="/js/input.js"></script>
  </body>
 </html>

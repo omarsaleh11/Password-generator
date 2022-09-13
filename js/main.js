@@ -70,6 +70,11 @@ darkModeToggle.addEventListener("click", () => {
 });
 
 // Check Boxes
+if (upperEl.checked) {
+ upper = true;
+} else {
+ upper = false;
+}
 upperEl.onchange = event => {
  if (upperEl.checked) {
   upper = true;
@@ -77,6 +82,11 @@ upperEl.onchange = event => {
   upper = false;
  }
 };
+if (lowerEl.checked) {
+ lower = true;
+} else {
+ lower = false;
+}
 lowerEl.onchange = event => {
  if (lowerEl.checked) {
   lower = true;
@@ -84,6 +94,11 @@ lowerEl.onchange = event => {
   lower = false;
  }
 };
+if (numbersEl.checked) {
+ number = true;
+} else {
+ number = false;
+}
 numbersEl.onchange = event => {
  if (numbersEl.checked) {
   number = true;
@@ -91,6 +106,11 @@ numbersEl.onchange = event => {
   number = false;
  }
 };
+if (symbolsEl.checked) {
+ symbol = true;
+} else {
+ symbol = false;
+}
 symbolsEl.onchange = event => {
  if (symbolsEl.checked) {
   symbol = true;
