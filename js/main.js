@@ -1,5 +1,3 @@
-console.clear();
-localStorage.clear();
 //  Characters
 let characters = [];
 const symbolsCH = ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", ",", "|", ":", ";", "<", ">", ".", "?", "/"];
@@ -49,7 +47,7 @@ const hasNumbers = numbersEl.checked;
 const hasSymbols = symbolsEl.checked;
 
 // Dark Mode Toggle
-let darkMode = localStorage.getItem("darkMode");
+let darkModeStorge = localStorage.getItem("darkMode");
 const darkModeToggle = document.querySelector("#dark-mode-toggle");
 const enableDarkMode = () => {
  document.body.classList.add("dark-mode");
@@ -59,12 +57,12 @@ const desableDarkMode = () => {
  document.body.classList.remove("dark-mode");
  localStorage.setItem("darkMode", null);
 };
-if (darkMode === "enabled") {
+if (darkModeStorge === "enabled") {
  enableDarkMode();
 }
 darkModeToggle.addEventListener("click", () => {
- darkMode = localStorage.getItem("darkMode");
- if (darkMode !== "enabled") {
+ darkModeStorge = localStorage.getItem("darkMode");
+ if (darkModeStorge !== "enabled") {
   enableDarkMode();
  } else {
   desableDarkMode();
@@ -86,7 +84,6 @@ lowerEl.onchange = event => {
   lower = false;
  }
 };
-console.log(lower);
 numbersEl.onchange = event => {
  if (numbersEl.checked) {
   number = true;

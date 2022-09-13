@@ -37,19 +37,22 @@
  --line-bg-clr: var(--line-bg-clr-dm);
 }
 $btn-pdng: rem(9) rem(17) rem(9) rem(15);
-.dark-mode-toggle {
- position: absolute;
- z-index: 100;
- top: 1rem;
- right: 1rem;
- color: var(--btn-dm);
- border: 2px solid currentColor;
- padding: rem(5);
- background: transparent;
- cursor: pointer;
- border-radius: var(--brdr-rds);
- width: rem(30);
- height: rem(30);
+.dark-mode-btn {
+ position: relative;
+ .dark-mode-toggle {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: rem(25);
+  color: var(--btn-dm);
+  border: 2px solid currentColor;
+  padding: rem(5);
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--brdr-rds);
+  width: rem(30);
+  height: rem(30);
+ }
 }
 $ff: "Inter", sans-serif;
 $ff-h1: "Karla", sans-serif;
