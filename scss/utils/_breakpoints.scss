@@ -1,0 +1,26 @@
+// to use it
+// @include b.breakpoint(large) {put the content here}
+// 700px, 1000px, 1440px
+$breakpoint-up: (
+ "medium": 43.75em,
+ "medium900": 56.25em,
+ "large": 62.5em,
+ "xlarge": 90em,
+);
+@mixin breakpoint-up($size) {
+ @media (min-width: map-get($breakpoint-up, $size)) {
+  @content;
+ }
+}
+// 699.98px, 999.98px, 1439.98px
+$breakpoint-down: (
+ "small": 43.7485em,
+ "small899.98": 56.24875em,
+ "medium": 62.49875em,
+ "large": 89.99875em,
+);
+@mixin breakpoint-down($size) {
+ @media (max-width: map-get($breakpoint-down, $size)) {
+  @content;
+ }
+}

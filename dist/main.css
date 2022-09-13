@@ -1,22 +1,55 @@
 :root {
-    --body-bg: hsla(215, 28%, 17%, 1);
+    --body-bg-dm: hsla(215, 28%, 17%, 1);
+    --body-bg-lm: hsla(152, 81%, 96%, 1);
     --h1-fw: 800;
     --h1-ls: -0.025em;
-    --h1-clr: hsla(0, 0%, 100%, 1);
-    --span-clr: hsla(144, 70%, 58%, 1);
+    --h1-clr-dm: hsla(0, 0%, 100%, 1);
+    --h1-clr-lm: hsla(250, 18%, 19%, 1);
+    --span-clr-dm: hsla(144, 70%, 58%, 1);
+    --span-clr-lm: hsla(160, 84%, 39%, 1);
     --p-fw: 400;
     --p-lh: 28px;
-    --p-clr: hsla(255, 5%, 84%, 1);
-    --btn-fs: rem(16);
+    --p-clr-dm: hsla(255, 5%, 84%, 1);
+    --p-clr-lm: hsla(220, 9%, 46%, 1);
+    --btn-fs: 16px;
     --btn-fw: 500;
     --btn-lh: 24px;
     --btn-clr: hsla(0, 0%, 100%, 1);
     --btn-bg-clr: hsla(160, 84%, 39%, 1);
     --btn-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-    --btn-pdng: 9px 17px 9px 15px;
-    --line-bg-clr: hsla(215, 28%, 25%, 1);
+    --line-bg-clr-dm: hsla(215, 28%, 25%, 1);
+    --line-bg-clr-lm: hsla(255, 5%, 84%, 1);
     --btm-btn-clr: hsla(215, 30%, 22%, 1);
-    --brdr-rds: 6px
+    --brdr-rds: 6px;
+    --body-bg: var(--body-bg-lm);
+    --h1-clr: var(--h1-clr-lm);
+    --span-clr: var(--span-clr-lm);
+    --p-clr: var(--p-clr-lm);
+    --line-bg-clr: var(--line-bg-clr-lm);
+    --btn-dm: var(--span-clr)
+}
+
+.dark-mode {
+    --body-bg: var(--body-bg-dm);
+    --h1-clr: var(--h1-clr-dm);
+    --span-clr: var(--span-clr-dm);
+    --p-clr: var(--p-clr-dm);
+    --line-bg-clr: var(--line-bg-clr-dm)
+}
+
+.dark-mode-toggle {
+    position: absolute;
+    z-index: 100;
+    top: 1rem;
+    right: 1rem;
+    color: var(--btn-dm);
+    border: 2px solid currentColor;
+    padding: 0.3125rem;
+    background: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    border-radius: var(--brdr-rds);
+    width: 1.875rem;
+    height: 1.875rem
 }
 
 html {
@@ -156,9 +189,9 @@ body {
     font-weight: var(--btn-fw);
     font-size: var(--btn-fs);
     background-color: var(--btn-bg-clr);
-    padding: var(--btn-pdng);
-    max-width: 191px;
-    min-height: 42px
+    padding: 0.5625rem 1.0625rem 0.5625rem 0.9375rem;
+    max-width: 11.9375rem;
+    min-height: 2.625rem
 }
 
 .top .passwords .password-length {

@@ -1,0 +1,72 @@
+@use "../globals/variables" as *;
+html {
+ font-size: 100%;
+ box-sizing: border-box;
+ height: 100%;
+ &:focus-within {
+  scroll-behavior: smooth;
+ }
+}
+*,
+*::after,
+*::before {
+ box-sizing: inherit;
+ font: inherit;
+}
+body {
+ margin: 0;
+ height: 100%;
+ padding: 0;
+ text-rendering: optimizeSpeed;
+ font-family: $ff;
+}
+.center {
+ display: grid;
+ align-items: center;
+ height: 100%;
+ position: relative;
+}
+h1,
+h2,
+h3 {
+ color: var(--h1-clr);
+ margin: 0;
+}
+span {
+ color: var(--span-clr);
+}
+p {
+ color: var(--p-clr);
+ margin: 0;
+}
+a,
+a:visited,
+a:active {
+ color: hsl(0, 0%, 96%);
+ text-decoration: none;
+}
+ul,
+li {
+ list-style: none;
+ padding-left: 0;
+ margin: 0;
+}
+img {
+ display: block;
+ object-fit: cover;
+ max-width: 100%;
+}
+.flex {
+ display: flex;
+ align-items: center;
+}
+button {
+ border-radius: var(--brdr-rds);
+ border: none;
+ cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+ html:focus-within {
+  scroll-behavior: auto;
+ }
+}

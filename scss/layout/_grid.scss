@@ -1,0 +1,107 @@
+@use "../utils" as *;
+@use "../globals/variables" as *;
+body {
+ background-color: var(--body-bg);
+}
+
+.password-generator {
+ width: min(90%, rem(600));
+ margin-inline: auto;
+}
+.top {
+ .title {
+  margin-bottom: rem(10);
+  h1 {
+   width: 13ch;
+   font-size: rem(40);
+   font-weight: var(--h1-fw);
+   letter-spacing: var(--h1-ls);
+   font-family: $ff-h1;
+  }
+ }
+ .desc {
+  margin-bottom: rem(51);
+  p {
+   font-size: rem(20);
+   font-weight: var(--p-fw);
+   line-height: var(--p-lh);
+  }
+ }
+ .passwords {
+  .btn {
+   margin-bottom: rem(15);
+   button {
+    line-height: var(--btn-lh);
+    color: var(--btn-clr);
+    box-shadow: var(--btn-box-shadow);
+    font-weight: var(--btn-fw);
+    font-size: var(--btn-fs);
+    background-color: var(--btn-bg-clr);
+    padding: $btn-pdng;
+    max-width: rem(191);
+    min-height: rem(42);
+   }
+  }
+  .password-length {
+   display: flex;
+   flex-direction: column;
+   gap: rem(10);
+   color: var(--h1-clr);
+   margin: rem(10) auto;
+   input {
+    width: 78%;
+    fill: var(--btn-bg-clr);
+    border-radius: 5px;
+    height: 20px;
+   }
+  }
+  label {
+   color: var(--h1-clr);
+  }
+ }
+}
+.line {
+ margin: rem(35) 0;
+ width: 100%;
+ border: 1px solid var(--line-bg-clr);
+}
+.bottom {
+ display: flex;
+ flex-wrap: wrap;
+ gap: rem(15);
+ button {
+  width: max(90%, rem(211));
+  overflow: hidden;
+  word-wrap: break-word;
+  margin-inline: auto;
+  cursor: pointer;
+  padding: rem(10) rem(30);
+  min-height: rem(50);
+  background-color: var(--btm-btn-clr);
+  color: hsla(142, 93%, 65%, 1);
+ }
+ .pass {
+  display: flex;
+  width: 80%;
+  margin-inline: auto;
+  gap: 10px;
+  .password {
+   width: 79%;
+  }
+  .copy {
+   width: 20%;
+   cursor: pointer;
+   padding: 0;
+  }
+ }
+}
+.flex {
+ gap: rem(15);
+ flex-wrap: wrap;
+ .checkbox {
+  display: flex;
+  gap: rem(10);
+  justify-items: center;
+  align-items: center;
+ }
+}

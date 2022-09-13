@@ -1,0 +1,66 @@
+@use "../utils" as *;
+@use "../globals/variables" as *;
+@include breakpoint-up("medium900") {
+ main {
+  padding: 0;
+ }
+ .card {
+  width: min(95%, rem(1110));
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "text img";
+  column-gap: rem(20);
+  border-radius: 12px;
+  &__img {
+   grid-area: img;
+   border-radius: 0px 12px 12px 0px;
+   img {
+    opacity: 0.7;
+    border-radius: 0px 12px 12px 0px;
+   }
+  }
+  &__text {
+   display: grid;
+   align-content: center;
+   text-align: left;
+   grid-area: text;
+   max-width: 38ch;
+   margin-inline: auto;
+   padding: 0;
+   .title {
+    font-size: fs(h1-dsk);
+    line-height: 44px;
+    margin-bottom: rem(37);
+    letter-spacing: 0em;
+    h1 {
+     width: 16ch;
+    }
+   }
+   .desc {
+    font-size: fs(p-dsk);
+    line-height: 25px;
+    margin-bottom: rem(76);
+    p {
+     width: 38ch;
+    }
+   }
+   ul {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    li {
+     display: flex;
+     row-gap: rem(2);
+     flex-direction: column;
+     align-items: center;
+     h2 {
+      font-size: fs(h2-dsk);
+     }
+     h3 {
+      color: color(h3-dsk);
+      letter-spacing: 0em;
+     }
+    }
+   }
+  }
+ }
+}
